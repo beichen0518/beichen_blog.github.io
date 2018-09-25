@@ -1,5 +1,5 @@
 * [首页]()
 * [指南](guide)
-* [Python](Python/Python)
+* [Python](Python/python)
 
 
