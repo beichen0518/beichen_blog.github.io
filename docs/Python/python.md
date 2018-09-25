@@ -1,1 +1,337 @@
-# python 入门
+# Python 函数
+
+
+```python
+"""
+x1 + x2 + x3 + x4 = 8
+
+"""
+```
+
+
+```python
+"""
+输入M和N 计算c(M,N)
+
+
+"""
+# 劣质代码的写法
+m = int(input(' m = '))
+n = int(input(' n = '))
+fm = 1
+for num in range(1 , m + 1):
+    fm *= num
+fn = 1
+for num in range(1 , n + 1):
+    fn *= num
+fmn = 1
+for num in range(1 , m - n + 1):
+    fmn *= num
+print(fm // fn // fmn)
+```
+
+## 函数
+- 我们可以把程序中相对独立的功能模块抽取出来
+ 这样做的好处一是减少重复代码的编写
+ 二是将来可以重复的使用这些功能模块
+- Python中的函数就是代表了这样的功能模块
+> **数学中的函数** y = f(x) f是函数名 x是自变量 y是因变量
+
+- def 定义函数的关键字
+
+
+
+```python
+# python 里函数的定义方法
+
+#定义求阶乘的函数- 求阶乘的功能抽取出来放到函数中
+def f(x):
+    y = 1
+    for num in range (1 , x + 1):
+        y *= num 
+    return y
+#定义函数是段前段后空两行
+
+m = int(input(' m = '))
+n = int(input(' n = '))
+print(f(m))
+print(f(3))
+hello = f(3)
+print(hello)
+# 当需要计算阶乘的时候不用再写循环而是直接调用已经定义好的函数。
+print(f(m) // f(n) // f(m - n))
+
+```
+
+
+```python
+def f(x):
+    y = 1
+    for num in range(1, x + 1):
+        y *= num
+    return y
+m = int(input(' m = '))
+n = int(input(' n = '))
+print(f(m) // f(n) // f(m - n))
+```
+
+>**小技巧** 在PyCharm中如果想要统一改所有变量的名字，双击变量名，右键
+ Refactor 下 Rename或Change Signature
+
+
+```python
+"""
+写一个函数，判断一个数是否是素数
+
+"""
+import math
+def is_prime(num):
+    if num != 1:
+        y = True
+    else:
+        y = False
+    for x in range(2, int(math.sqrt(num)) + 1):
+        if num % x == 0:
+            y = False
+            break
+    return y
+
+if is_prime(1) :
+    print('输入的数是素数')
+else:
+    print('输入的数不是素数')
+        
+        
+
+#num1 = int(input('请输入一个数'))
+#is_prime(num1)
+
+        
+```
+
+
+```python
+from math import sqrt
+def is_prime(num):
+    for x in range(2, int(sqrt(num)) + 1):
+        if num % x == 0:
+            
+            return False
+    return True
+print(is_prime(5))
+```
+
+>**提示** 通过下面的if条件可以在导入模块时不去执行下面的代码
+
+```Python
+if __name__ == '__main__':
+    #放入不需要导入的内容
+```
+
+
+
+```python
+print(__name__)
+# 在本模块中执行结果是__main__
+#调用的情况执行结果是该模块的名字
+```
+
+> **小技巧** 在PyCharm中按住ctrl键点函数，就会自动切换到定义函数的地方
+
+
+```python
+"""
+两个函数
+一个计算两个数的最大公约数
+一个计算两个数的最小公倍数
+"""
+#最大公约数
+def gcd(x, y):
+    pass
+    return 1
+#最小公倍数
+def lcm(x, y):
+    pass
+    return 
+```
+
+>**提示** 同时用from...import...导入函数发生了命名冲突，哪个后定义哪个生效
+
+### 别名定义方法
+
+
+
+```python
+import math as m
+#给math函数定义别名
+```
+
+
+```python
+#文档注释
+def factorial(x):
+    """
+    作用（谷歌的写法）
+    
+    Parameters:
+         num - 一个正整数
+        
+    Returns:
+         因变量
+    """
+    
+    print()
+def gcd(x,y)
+    """
+    （官方注释）
+    :param x: 非负整数
+    :param y: 非负整数
+    :return: x, y 的最大公约数
+    """
+#用来在函数中加注释
+# 在使用函数是用Ctrl + q 参看注释
+```
+
+### 可变参数
+函数的参数个数可以有0个或任意多个
+
+
+```python
+def add(*args):
+#可变参数，参数的数量不固定
+    total = 0
+    for value in args:
+        total += value
+    return total
+print(add(1))
+print(add(1, 100))
+```
+
+
+```python
+"""
+写一个函数，给一个数，判断是否是回文数，例如12321 11 121 
+写一个函数，判断是否是回文素数
+
+"""
+```
+
+
+```python
+def is_palindrome(num):
+    """
+    判断一个数是不是回文数
+    :param num: 一个非负整数
+    :return: 是回文数返回True否则返回False
+    """
+    temp = num
+    total = 0
+    while temp > 0:
+        total = total * 10 + temp % 10
+        temp //= 10
+    return num == total
+print(is_palindrome(12321))
+
+from math import sqrt
+def is_prime(num):
+    for x in range(2, int(sqrt(num)) + 1):
+        if num % x == 0:
+            
+            return False
+    return True
+number = int(input('number = '))
+if is_palindrome(number) and is_prime(number):# 由于and短路的特性，所以这两个函数的位置影响代码的执行效率
+    print('%d是回文素数'% number)
+else:
+    print('%d不是回文素数'% number)
+    
+```
+
+    True
+    number = 12321
+    12321不是回文素数
+    
+
+> **注意** and和or运算符都是带短路功能的运算符。
+- 如果and左边的表达式是False那么右边的表达式被短路（不执行）。
+- 如果or左边的表达式是True那么右边的表示被短路（不执行）
+- 所以左右两边的表达式放置的顺序可能会对执行效率产生明显的影响
+
+
+
+```python
+"""
+作业：
+
+1.21根火柴，1-4根，谁拿到最后一根谁输，玩家先拿，保证计算机可以赢
+
+
+"""
+```
+
+
+```python
+match = 21
+while match > 0:
+    print('电脑拿走%d,剩余的火柴数为%d'%(computer,match))
+    play1 = int(input('请输入要拿走的火柴数'))
+    match -= play1
+    if match == 0:
+        print('玩家输')
+        break
+    computer = 5 - play1
+    match -= computer
+    if match == 0:
+        print('电脑输')
+        break
+    
+```
+
+    电脑拿走4,剩余的火柴数为21
+    请输入要拿走的火柴数3
+    电脑拿走2,剩余的火柴数为16
+    请输入要拿走的火柴数4
+    电脑拿走1,剩余的火柴数为11
+    请输入要拿走的火柴数4
+    电脑拿走1,剩余的火柴数为6
+    请输入要拿走的火柴数4
+    电脑拿走1,剩余的火柴数为1
+    请输入要拿走的火柴数1
+    玩家输
+    
+
+
+```python
+"""
+2. 客上天然居居然天上客
+   僧游云隐寺寺隐云游僧
+   预习字符串的功能
+   预习列表
+   
+"""
+print(type(len('122')))
+```
+
+    <class 'int'>
+    
+
+
+```python
+def is_palindstring(str1):
+    """
+    判断是否是回文字符串
+    :param str1:一个字符串
+    :return: 如果字符串是回文形式返回True,否则返回False
+    """
+    str1 = str1.strip()
+    str2 = ""
+    for x in range(len(str1.strip()) - 1, -1, -1):
+        str2 += str1[x]
+    return str1 == str2
+print(is_palindstring('客上天然居居然天上客'))
+print(is_palindstring('1234566'))
+```
+
+    True
+    False
+     
