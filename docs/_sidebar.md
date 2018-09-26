@@ -1,5 +1,5 @@
 * [首页]()
-* [指南](guide)
-* [Python](Python/python)
+* Python
+	* [Python 函数](Python/100010001)
 
 
