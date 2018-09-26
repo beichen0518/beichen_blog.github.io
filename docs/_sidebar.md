@@ -1,5 +1,6 @@
 * [首页]()
-* Python
-	* [Python 函数](Python/100010001)
+* [Python](Python/README)
+* [读书笔记](reading_notes/README)
+	
 
 
