@@ -14,6 +14,6 @@
 	* [Python 正则表达式](Python/100010013)
 	* [Python Pygame](Python/100010014)
 	* [Python Pygame游戏](Python/100010015)
-	* [Python aiohttp + motor + flask 搭建异步服务器](Python/100010016)
+	* [Python aiohttp + motor 搭建异步服务器](Python/100010016)
 
 
